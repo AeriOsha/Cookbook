@@ -1,3 +1,7 @@
+if(process.env.NODE_ENV !== 'production'){
+    require('dotenv').config()
+}
+
 const express = require('express');
 const session = require('express-session')
 const path = require('path');
@@ -64,6 +68,7 @@ app.use((req,res,next) =>{
     res.locals.error = req.flash('error')
     next()
 })
+
 
 app.use('/',userRoutes)
 app.use('/campgrounds', campgrounds)
