@@ -20,7 +20,11 @@
                     <div class="valid-feedback">Great!</div>
                 </div> 
             </div>
-            <input type="file" name="image" multiple>
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupFile01">Upload</label>
+                <input type="file" class="form-control" id="image" name="image" multiple />
+              </div>
+              
             <div class="mb-3">
                 <label class="form-label" for="description">Description</label>
                 <textarea class="form-control" type="text" id="description" name="campground[description]" placeholder="Description"></textarea>
