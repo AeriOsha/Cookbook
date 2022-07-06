@@ -8,14 +8,14 @@ const path = require('path');
 const flash = require('connect-flash')
 const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
-const { campgroundSchema, reviewSchema } = require('./schemas.js');
+const { recioeSchema, reviewSchema } = require('./schemas.js');
 const ExpressError = require('./utils/ExpressError');
 const methodOverride = require('method-override');
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const User = require('./models/user')
 
-const campgrounds = require('./routes/campgrounds')
+const recipes = require('./routes/recipes')
 const reviews = require('./routes/reviews')
 const userRoutes = require('./routes/user')
 
@@ -71,8 +71,8 @@ app.use((req,res,next) =>{
 
 
 app.use('/',userRoutes)
-app.use('/campgrounds', campgrounds)
-app.use('/campgrounds/:id/reviews', reviews)
+app.use('/recipes', recipes)
+app.use('/recipes/:id/reviews', reviews)
 
 app.get('/', (req, res) => {
     res.render('home')

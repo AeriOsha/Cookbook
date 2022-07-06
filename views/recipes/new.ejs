@@ -1,0 +1,45 @@
+<% layout('layouts/boilerplate') %>
+<div class="row">
+    <h1 class="text-center">New Recipe</h1>
+    <div class="col-6 offset-3">
+        <form action="/recipes" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+            <div class="mb-3" >
+                <label class="form-label" for="title">Title</label>
+                <input class="form-control" type="text" id="title" name="recipe[title]" placeholder="Title" required>
+                <div class="valid-feedback">Looks Good!</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="preptime">Preptime</label>
+                <input class="form-control" type="text" id="preptime" name="recipe[preptime]" placeholder="Preptime" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="notes">Notes</label>
+                <input class="form-control" type="text" id="notes" name="recipe[notes]" placeholder="Notes" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="cooktim">Cooktime</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" name="recipe[cooktime]">
+                    <div class="valid-feedback">Great!</div>
+                </div> 
+            </div>
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupFile01">Upload Images</label>
+                <input type="file" class="form-control" id="image" name="image" multiple />
+              </div>
+              
+            <div class="mb-3">
+                <label class="form-label" for="instructions">Instructions</label>
+                <textarea class="form-control" type="text" id="instructions" name="recipe[instructions]" placeholder="Description"></textarea>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="ingredients">Ingredients</label>
+                <textarea class="form-control" type="text" id="ingredients" name="recipe[ingredients]" placeholder="Description"></textarea>
+            </div>
+
+
+            <button class="btn btn-success mb-3">Add Recipe</button>
+        </form>
+        <a href="/recipes"all recipes></a>
+    </div>
+</div>

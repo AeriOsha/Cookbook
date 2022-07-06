@@ -3,7 +3,7 @@ const router = express.Router({mergeParams: true})
 const {validateReview,isLoggedIn, isReviewAuthor} =require('../middleware')
 const catchAsync = require('../utils/catchAsync');
 const ExpressError = require('../utils/ExpressError');
-const Campground = require('../models/campground');
+const Recipe = require('../models/recipe');
 const Review = require('../models/review');
 const reviews = require('../controllers/reviews')
 

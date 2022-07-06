@@ -1,0 +1,27 @@
+<% layout('layouts/boilerplate')%>
+
+    <h1>Recipes</h1>
+    <div><a href="/recipes/new">Add Recipe</a></div>
+
+        <% for (let recipe of recipes) {%>
+            <div class="card mb-3">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img class="img-fluid" src="<%= recipe.image%>">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                           <h5 class="card-title"> <%= recipe.title %> </h5>
+                           <p class="card-text"> <%=recipe.instructions%></p>
+                           <p class="card-text"> <%=recipe.ingredients%></p>
+                           <p class="card-text">
+                               <small class="text-muted"><%= recipe.cooktime %></small>
+                               <small class="text-muted"><%= recipe.preptime %></small>
+                           </p>
+                            <a href="/recipes/<%= recipe._id%>" class="btn btn-primary"> View <%=recipe.title%> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         <% }%>
+   

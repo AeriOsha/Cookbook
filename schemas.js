@@ -1,15 +1,16 @@
 const Joi = require('joi');
 
-module.exports.campgroundSchema = Joi.object({
-    campground: Joi.object({
+module.exports.recipeSchema = Joi.object({
+    recipe: Joi.object({
         title: Joi.string().required().min(3),
-        price: Joi.number().required().min(0),
-        //image: Joi.string().required(),
-        location: Joi.string().required().min(3),
-        description: Joi.string().required().min(5)
+        ingredients:Joi.string().required(),
+        instructions: Joi.string().required(),
+        notes: Joi.string(),
+        preptime: Joi.string(),
+        cooktime: Joi.string(),
+        
     }).required()
 });
-
 module.exports.reviewSchema = Joi.object({
     review: Joi.object({
         rating: Joi.number().required(),

@@ -2,14 +2,16 @@ const mongoose = require('mongoose');
 const Review = require('./review')
 const Schema = mongoose.Schema;
 
-const CampgroundSchema = new Schema({
+const RecipeSchema = new Schema({
     title: String,
     images: [
         {url: String,filename: String}
     ],
-    price: Number,
-    description: String,
-    location: String,
+    ingredients: Array,
+    instructions: String,
+    notes:String,
+    preptime: String,
+    cooktime:String,
     author:{
         type: Schema.Types.ObjectId,
         ref:'User'
@@ -22,7 +24,7 @@ const CampgroundSchema = new Schema({
     ]
 });
 
-CampgroundSchema.post('findOneAndDelete', async function (doc) {
+RecipeSchema.post('findOneAndDelete', async function (doc) {
     if (doc) {
         await Review.deleteMany({
             _id: {
@@ -32,4 +34,4 @@ CampgroundSchema.post('findOneAndDelete', async function (doc) {
     }
 })
 
-module.exports = mongoose.model('Campground', CampgroundSchema);
+module.exports = mongoose.model('Recipe', RecipeSchema);
