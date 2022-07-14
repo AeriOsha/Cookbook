@@ -1,45 +1,90 @@
 <% layout('layouts/boilerplate') %>
+<link rel="stylesheet" href="/stylesheets/styles.css">
+
+
 <div class="row">
     <h1 class="text-center">New Recipe</h1>
-    <div class="col-6 offset-3">
+    <div class="col-6 offset-3 ">
         <form action="/recipes" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
             <div class="mb-3" >
                 <label class="form-label" for="title">Title</label>
                 <input class="form-control" type="text" id="title" name="recipe[title]" placeholder="Title" required>
                 <div class="valid-feedback">Looks Good!</div>
             </div>
-            <div class="mb-3">
-                <label class="form-label" for="preptime">Preptime</label>
-                <input class="form-control" type="text" id="preptime" name="recipe[preptime]" placeholder="Preptime" required>
+
+            <div class="mb-3" >
+            <label class="prep-label"  for="preptime">Preptime</label>
+                <input class="form-control prep-form" type="number" id="preptime" name="recipe[preptime]" placeholder="0" required>
+                <select class="form-select prep-form" id="prepDrop" aria-label="Default select example">
+                    <option selected>Units </option>
+                    <option value="1">Hours</option>
+                    <option value="2">Minutes</option>
+                </select> 
             </div>
-            <div class="mb-3">
-                <label class="form-label" for="notes">Notes</label>
-                <input class="form-control" type="text" id="notes" name="recipe[notes]" placeholder="Notes" required>
+            <div class="mb-3" >
+            <label class="form-label" for="cooktime">Cooktime</label>
+                <input class="form-control my-inline-form" type="number" id="cooktime" name="recipe[cooktime]" placeholder="0" required>
+                <select class="form-select my-inline-form" aria-label="Default select example">
+                    <option value="hours">Hours</option>
+                    <option value="minutes">Minutes</option>
+                </select> 
             </div>
-            <div class="mb-3">
-                <label class="form-label" for="cooktim">Cooktime</label>
-                <div class="input-group">
-                    <input type="text" class="form-control" name="recipe[cooktime]">
-                    <div class="valid-feedback">Great!</div>
-                </div> 
+
+            <div id="ingredient-container" class="mb-3">
+                <div id="single-ingredient">
+                    <label class="ingredient-label" for="ingredients">Ingredients</label>
+                    <input class="form-control ingredient-form" type="number" id="ingredients" name="ingredients[0]" placeholder="0" required>
+                    <select class="form-select ingredient-form" aria-label="Default select example" name="ingredients[0]">
+                       
+                       <option value="cups">Cups</option>
+                        <option value="ounces">Ounces</option>
+                        <option value="tbps">Tbps</option>
+                        <option value="tsps">Tsp</option>
+                    </select> 
+                    <input class="ingredient-form" type="text" name="ingredients[0]">
+                </div>
             </div>
-            <div class="input-group mb-3">
-                <label class="input-group-text" for="inputGroupFile01">Upload Images</label>
-                <input type="file" class="form-control" id="image" name="image" multiple />
-              </div>
-              
+            <div><button type="button" id="addIngredient">Add Another Ingredient</button></div>
+
             <div class="mb-3">
                 <label class="form-label" for="instructions">Instructions</label>
                 <textarea class="form-control" type="text" id="instructions" name="recipe[instructions]" placeholder="Description"></textarea>
             </div>
             <div class="mb-3">
-                <label class="form-label" for="ingredients">Ingredients</label>
-                <textarea class="form-control" type="text" id="ingredients" name="recipe[ingredients]" placeholder="Description"></textarea>
+                <label class="form-label" for="notes">Notes</label>
+                <input class="form-control" type="text" id="notes" name="recipe[notes]" placeholder="Notes" required>
             </div>
-
-
+            
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupFile01">Upload Images</label>
+                <input type="file" class="form-control" id="image" name="image" multiple />
+              </div>
+ 
             <button class="btn btn-success mb-3">Add Recipe</button>
         </form>
         <a href="/recipes"all recipes></a>
     </div>
 </div>
+<script>
+    const container = document.getElementById('ingredient-container')
+    const button = document.getElementById('addIngredient')
+    let counter = 1
+    button.addEventListener('click',(event) => {
+        console.log('clicked')
+        event.preventDefault()
+        container.insertAdjacentHTML('beforeend' , `<div id="single-ingredient">
+            <label class="ingredient-label" for="ingredients"></label>
+<input class="form-control ingredient-form" type="number" id="ingredients" name='ingredients[${counter}]' placeholder="0" required>
+<select name='ingredients[${counter}]' class="form-select ingredient-form" aria-label="Default select example">
+  
+    <option value="cups">Cups</option>
+    <option value="ounces">Ounces</option>
+    <option value="tbps">Tbps</option>
+    <option value="tsps">Tsp</option>
+</select> 
+<input class="ingredient-form" type="text" name='ingredients[${counter}]'>
+                </div>`)
+
+                counter++
+    })
+</script>

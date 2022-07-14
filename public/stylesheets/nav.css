@@ -1,0 +1,17 @@
+.content{
+    justify-content: right;
+    text-align: right;
+    margin-right: 6px;
+ 
+}
+.navbar{
+   background-color:white !important;
+}
+
+.nav-link{
+    color:rgb(108,117,125) !important;
+}
+
+.navbar-brand{
+    color:rgb(108,117,125) !important;
+}

@@ -14,6 +14,8 @@ const methodOverride = require('method-override');
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const User = require('./models/user')
+const mongoSanitize = require('express-mongo-sanitize')
+
 
 const recipes = require('./routes/recipes')
 const reviews = require('./routes/reviews')
@@ -40,6 +42,7 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(mongoSanitize())
 
 const sessionConfig = {
     secret:'thisshouldbeabettersecret',
@@ -74,9 +77,6 @@ app.use('/',userRoutes)
 app.use('/recipes', recipes)
 app.use('/recipes/:id/reviews', reviews)
 
-app.get('/', (req, res) => {
-    res.render('home')
-});
 
 app.all('*', (req, res, next) => {
     next(new ExpressError('Page Not Found', 404))

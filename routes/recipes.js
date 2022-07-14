@@ -11,11 +11,11 @@ router.get('/new', isLoggedIn, recipes.renderNewForm)
 
 router.route('/')
     .get(catchAsync(recipes.index))
-    .post(isLoggedIn,upload.array('image'),validateRecipe,catchAsync(recipes.createRecipe))
+    .post(isLoggedIn,upload.array('image'),catchAsync(recipes.createRecipe))
 
 router.route('/:id')
     .get(catchAsync(recipes.showRecipe))
-    .put(isLoggedIn, isAuthor,validateRecipe, catchAsync(recipes.updateRecipe))
+    .put(isLoggedIn, isAuthor, catchAsync(recipes.updateRecipe))
     .delete(isLoggedIn,isAuthor, catchAsync(recipes.deleteRecipe))
 
 

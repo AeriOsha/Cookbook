@@ -1,0 +1,12 @@
+.prep-form{
+  width:45%;
+  display: inline;
+}
+.prep-label, .ingredient-label{
+    width:100%;
+}
+
+.ingredient-form{
+    width: 25%;
+    display: inline;
+}

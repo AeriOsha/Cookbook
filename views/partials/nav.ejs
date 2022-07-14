@@ -1,24 +1,27 @@
+<link rel="stylesheet" href="/stylesheets/nav.css">
 
-<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark" >
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">YelpCamp</a>
+      <a class="navbar-brand" href="/">
+        <img src="https://static.thenounproject.com/png/135694-200.png" width="30"height="30" alt=""> Cookbook</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <div class="content">
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-link active"  href="/">Home</a>
-          <a class="nav-link" href="/campgrounds">Campgrounds</a>
-          <a class="nav-link" href="/campgrounds/new">Add Campgrounds</a>
+          <a class="nav-link " href="/recipes"><img src="https://static.thenounproject.com/png/1593286-200.png" width="30" height="30" alt="">Recipes</a>
+          <a class="nav-link" href="/recipes/new"><img src="https://static.thenounproject.com/png/1069058-200.png" width="30" height="30" alt="">Add Recipes</a>
         </div>
-        <div class="navbar-nav">
+        <div class="navbar-nav" >
           <% if(!currentUser){ %>
           <a class="nav-link" href="/login">Login</a>
           <a class="nav-link" href="/register">Register</a>
           <% } else{ %>
-          <a class="nav-link" href="/logout">Logout</a>
+          <a class="nav-link" href="/logout"> <img src="https://static.thenounproject.com/png/2195405-200.png" width="30" height="30" alt=""> Logout</a>
           <%} %>
         </div>
       </div>
+    </div>
     </div>
   </nav>

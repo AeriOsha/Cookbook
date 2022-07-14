@@ -1,3 +1,4 @@
+const { model } = require('mongoose');
 const User = require('../models/user');
 
 module.exports.renderRegister = (req, res) => {
@@ -31,8 +32,18 @@ module.exports.login = (req, res) => {
     res.redirect(redirectUrl);
 }
 
-module.exports.logout = (req, res) => {
-    req.logout();
-    req.flash('success', "Goodbye!");
-    res.redirect('/recipes');
+module.exports.logout = (req, res,next) => {
+    req.logout(function (err) {
+        if(err){
+            return next(err)
+        }
+        req.flash('success', "Goodbye!");
+        res.redirect('/recipes');
+    
+    })
+  
+}
+
+module.exports.renderHome = (req, res) => {
+    res.render('recipes/home');
 }

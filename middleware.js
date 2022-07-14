@@ -13,6 +13,7 @@ module.exports.isLoggedIn = (req, res, next) => {
 }
 
 module.exports.validateRecipe = (req, res, next) => {
+    console.log(req.body)
     const { error } = recipeSchema.validate(req.body);
     if (error) {
         const msg = error.details.map(el => el.message).join(',')

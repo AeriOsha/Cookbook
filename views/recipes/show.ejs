@@ -1,8 +1,9 @@
 <% layout('layouts/boilerplate')%>
 <link rel="stylesheet" href="/stylesheets/stars.css">
+<link rel="stylesheet" href="/stylesheets/show.css">
 
 <div class="row">
-    <div class="col-6">
+    <div class="col-8">
         <div id="recipeCarousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <% recipe.images.forEach((img, i) => {  %>
@@ -26,13 +27,23 @@
 
         <div class="card mb-3">
             <div class="card-body">
-                <h5 class="card-title"><%= recipe.title%></h5>
-                <p class="card-text"><%= recipe.ingredients%></p>
+                <h3 class="card-title"><%= recipe.title%></h3>
+                <span>Preptime - <%= recipe.preptime%> Cooktime - <%= recipe.preptime%></span>
+        <ul>
+                <% for(let i=0; i<recipe.ingredients.length; i++) { %>
+                     <%    const num = recipe.ingredients[i][0]%>
+                     <%    const unit = recipe.ingredients[i][1] %>
+                     <%    const label = recipe.ingredients[i][2]%>
+                    <li> <%=num %> <%=unit%>, <%=label%> </li>
+                    <% } %>
+                
+        </ul>
             </div>
+       
+
             <ul class="list-group list-group-flush">
-                <li class="list-group-item text-muted"><%= recipe.cooktime%></li>
-                <li class="list-group-item text-muted"><%= recipe.preptime%></li>
-                <li class="list-group-item">Submitted by <%= recipe.author.username%></li>
+                <li class="list-group-item text-muted">Submitted by <%= recipe.author.username%></li>
+                <li class="list-group-item "><%= recipe.instructions%></li>
             </ul>
             <%  if( currentUser && recipe.author.equals(currentUser._id))  {%>
             <div class="card-body">
@@ -48,7 +59,7 @@
         </div>
 
     </div>
-    <div class="col-6">
+    <div class=" review col-2 offset-md-2">
         <% if(currentUser){ %>
         <h2>Leave a Review</h2>
         <form action="/recipes/<%=recipe._id%>/reviews" method="POST" class="mb-3 validated-form" novalidate>

@@ -11,8 +11,11 @@ module.exports.renderNewForm = (req,res)=>{
 }
 
 module.exports.createRecipe = async (req, res, next) => {
+    console.log(req.body)
+    
     const recipe = new Recipe(req.body.recipe);
     recipe.images = req.files.map(f => ({ url: f.path, filename: f.filename }));
+    recipe.ingredients = req.body.ingredients
     recipe.author = req.user._id;
     await recipe.save();
     console.log(recipe)
