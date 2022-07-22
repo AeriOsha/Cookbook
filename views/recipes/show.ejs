@@ -28,7 +28,7 @@
         <div class="card mb-3">
             <div class="card-body">
                 <h3 class="card-title"><%= recipe.title%></h3>
-                <span>Preptime - <%= recipe.preptime%> Cooktime - <%= recipe.preptime%></span>
+                <span>Preptime - <%= recipe.preptime%> <%= recipe.prepUnit%> Cooktime - <%= recipe.cooktime%> <%= recipe.cookUnit%></span>
         <ul>
                 <% for(let i=0; i<recipe.ingredients.length; i++) { %>
                      <%    const num = recipe.ingredients[i][0]%>

@@ -2,24 +2,20 @@
 <link rel="stylesheet" href="/stylesheets/index.css">
     <h1 style="text-align: center; margin-top: 12px; color:rgb(108,117,125);">All Recipes</h1>
     <div style="text-align: center;"><a href="/recipes/new">Add A Recipe</a></div>
-    <div class="row">
+    <div class=" recipe-container row">
         <% for (let recipe of recipes) {%>
-            <div class="card mb-3" style="width:18em; border-color:rgb(108,117,125);">
-                <div class="col-md-8"> 
-                    <div class="">
-                        <img class="card-img-top" src=<%= recipe.images[0].url%> >
-                    </div>
-                        <div class="card-body">
-                           <h5 class="card-title"> <%= recipe.title %> </h5>
-                           <p class="card-text"> <%=recipe.instructions%></p>
-                           <p class="card-text"> <%=recipe.ingredients%></p>
-                           <p class="card-text">
-                               <small class="text-muted"><%= recipe.cooktime %></small>
-                               <small class="text-muted"><%= recipe.preptime %></small>
-                           </p>
-                            <a href="/recipes/<%= recipe._id%>" class="btn"> View <%=recipe.title%> </a>
-                        </div>
-                    </div>
+            <div class=" col-lg-3 card mb-3" style="width:18em; border-color:rgb(108,117,125);">
+               <% if(recipe.images != "undefined") {%>
+                <div class="img-container">
+                 <img class="card-image card-img-top" src='<%= recipe.images[0].url%>' >
                 </div>
-         <% }%>
-        </div>
+                <% } else{ %>
+                   <img class="card-image card-img-top" src='https://tmbidigitalassetsazure.blob.core.windows.net/rms3-prod/attachments/37/1200x1200/exps16865_CW143044B06_12_2b.jpg'> 
+              <% }%>
+                   <div class="card-body">
+                    <h5 class="card-title" href =""> <%= recipe.title %> </h5>
+                    <a href="/recipes/<%= recipe._id%>" class="btn"> View <%=recipe.title%> </a>
+                </div>
+            </div>
+        <% }%>
+     </div>

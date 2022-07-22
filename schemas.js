@@ -7,7 +7,9 @@ module.exports.recipeSchema = Joi.object({
         instructions: Joi.string().required(),
         notes: Joi.string(),
         preptime: Joi.string(),
+        prepUnit: Joi.string(),
         cooktime: Joi.string(),
+        cookUnit: Joi.string()
         
     }).required()
 });

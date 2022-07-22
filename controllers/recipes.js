@@ -12,7 +12,6 @@ module.exports.renderNewForm = (req,res)=>{
 
 module.exports.createRecipe = async (req, res, next) => {
     console.log(req.body)
-    
     const recipe = new Recipe(req.body.recipe);
     recipe.images = req.files.map(f => ({ url: f.path, filename: f.filename }));
     recipe.ingredients = req.body.ingredients
@@ -49,6 +48,8 @@ module.exports.renderEditForm = async (req, res) => {
 module.exports.updateRecipe= async (req, res) => {
     const { id } = req.params;
     const recipe = await Recipe.findByIdAndUpdate(id, { ...req.body.recipe });
+    recipe.ingredients = req.body.ingredients
+    await recipe.save();
     req.flash('success', 'Successfully updated recipe!');
     res.redirect(`/recipes/${recipe._id}`)
 }

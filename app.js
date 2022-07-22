@@ -14,6 +14,7 @@ const methodOverride = require('method-override');
 const passport = require('passport')
 const LocalStrategy = require('passport-local')
 const User = require('./models/user')
+const {MongoStore} = require("connect-mongo")
 const mongoSanitize = require('express-mongo-sanitize')
 
 
@@ -21,8 +22,10 @@ const recipes = require('./routes/recipes')
 const reviews = require('./routes/reviews')
 const userRoutes = require('./routes/user')
 
-
-mongoose.connect('mongodb://localhost:27017/yelp-camp', {
+const MongoDBStore = require("connect-mongo")(session)
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp'
+//'mongodb://localhost:27017/yelp-camp
+mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
@@ -42,10 +45,24 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')))
-app.use(mongoSanitize())
+app.use(mongoSanitize({
+    replaceWith:''
+}))
+
+const secret = process.env.SECRET || 'thisshouldbeabettersecret'
+
+const store = new MongoDBStore({
+    url: dbUrl,
+    secret,
+    touchAfter:24 * 3600
+})
+store.on('error', function (e){
+    console.log("Session store error", e)
+})
 
 const sessionConfig = {
-    secret:'thisshouldbeabettersecret',
+    store,
+    secret,
     resave: false,
     saveUninitialized:true,
     cookie:{

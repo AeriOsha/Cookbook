@@ -17,12 +17,21 @@
                     value="<%=recipe.instructions %>" required>
                     <div class="valid-feedback">Great!</div>
             </div>
-            <div class="mb-3">
-                <label class="form-label" for="ingredients">Ingredients</label>
-                <input class="form-control" type="text" id="ingredients" name="recipe[ingredients]"
-                    value="<%=recipe.ingredients %>" required>
-                    <div class="valid-feedback">Getting There!</div>
+            <div id="ingredient-container"class="mb-3">
+                <div id="single-ingredient">
+                    <label class="ingredient-label form-label" for="ingredients">Ingredients</label>
+                    <input class="form-control ingredient-form" type="number" id="ingredients" name="ingredients[0]" placeholder="0" required>
+                    <select class="form-select ingredient-form" aria-label="Default select example" name="ingredients[0]">
+                        <option value="cups">Cups</option>
+                        <option value="ounces">Ounces</option>
+                        <option value="tbps">Tbps</option>
+                        <option value="tsps">Tsp</option>
+                    </select> 
+                <input class=" form-control ingredient-form" type="text" name="ingredients[0]">
+                </div>
             </div>
+            <div><button type="button" id="addIngredient">Add Another Ingredient</button></div>
+
             <div class="mb-3">
                 <label class="form-label" for="preptime">Preptime</label>
                 <div class="input-group">
@@ -45,3 +54,26 @@
 
     </div>
 </div>
+
+<script>
+    const container = document.getElementById('ingredient-container')
+    const button = document.getElementById('addIngredient')
+    let counter = 1
+    button.addEventListener('click',(event) => {
+        console.log('clicked')
+        event.preventDefault()
+        container.insertAdjacentHTML('beforeend' , `<div id="single-ingredient">
+            <label class="ingredient-label" for="ingredients"></label>
+<input class="form-control ingredient-form" type="number" id="ingredients" name='ingredients[${counter}]' placeholder="0" required>
+<select name='ingredients[${counter}]' class="form-select ingredient-form" aria-label="Default select example">
+    <option value="cups">Cups</option>
+    <option value="ounces">Ounces</option>
+    <option value="tbps">Tbps</option>
+    <option value="tsps">Tsp</option>
+</select> 
+<input class="ingredient-form" type="text" name='ingredients[${counter}]'>
+                </div>`)
+
+                counter++
+    })
+</script>

@@ -1,8 +1,8 @@
-.prep-form{
-  width:45%;
+.prep-form, .cook-form{
+  width:48%;
   display: inline;
 }
-.prep-label, .ingredient-label{
+.prep-label, .ingredient-label, .cook-label{
     width:100%;
 }
 

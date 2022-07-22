@@ -15,16 +15,16 @@
             <div class="mb-3" >
             <label class="prep-label"  for="preptime">Preptime</label>
                 <input class="form-control prep-form" type="number" id="preptime" name="recipe[preptime]" placeholder="0" required>
-                <select class="form-select prep-form" id="prepDrop" aria-label="Default select example">
+                <select class="form-select prep-form" id="prepUnit"  name="recipe[prepUnit]" aria-label="Default select example">
                     <option selected>Units </option>
-                    <option value="1">Hours</option>
-                    <option value="2">Minutes</option>
+                    <option value="hours">Hours</option>
+                    <option value="minutes">Minutes</option>
                 </select> 
             </div>
             <div class="mb-3" >
-            <label class="form-label" for="cooktime">Cooktime</label>
-                <input class="form-control my-inline-form" type="number" id="cooktime" name="recipe[cooktime]" placeholder="0" required>
-                <select class="form-select my-inline-form" aria-label="Default select example">
+            <label class="cook-label" for="cooktime">Cooktime</label>
+                <input class="form-control cook-form" type="number" id="cooktime" name="recipe[cooktime]" placeholder="0" required>
+                <select class="form-select cook-form" id="cookUnit" name="recipe[cookUnit]" aria-label="Default select example">
                     <option value="hours">Hours</option>
                     <option value="minutes">Minutes</option>
                 </select> 
@@ -35,13 +35,12 @@
                     <label class="ingredient-label" for="ingredients">Ingredients</label>
                     <input class="form-control ingredient-form" type="number" id="ingredients" name="ingredients[0]" placeholder="0" required>
                     <select class="form-select ingredient-form" aria-label="Default select example" name="ingredients[0]">
-                       
                        <option value="cups">Cups</option>
                         <option value="ounces">Ounces</option>
                         <option value="tbps">Tbps</option>
                         <option value="tsps">Tsp</option>
                     </select> 
-                    <input class="ingredient-form" type="text" name="ingredients[0]">
+                    <input class=" form-control ingredient-form" type="text" name="ingredients[0]">
                 </div>
             </div>
             <div><button type="button" id="addIngredient">Add Another Ingredient</button></div>
@@ -52,12 +51,12 @@
             </div>
             <div class="mb-3">
                 <label class="form-label" for="notes">Notes</label>
-                <input class="form-control" type="text" id="notes" name="recipe[notes]" placeholder="Notes" required>
+                <input class="form-control" type="text" id="notes" name="recipe[notes]" placeholder="Notes" >
             </div>
             
             <div class="input-group mb-3">
                 <label class="input-group-text" for="inputGroupFile01">Upload Images</label>
-                <input type="file" class="form-control" id="image" name="image" multiple />
+                <input type="file" class="form-control" id="image" name="image" multiple required />
               </div>
  
             <button class="btn btn-success mb-3">Add Recipe</button>

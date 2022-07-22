@@ -11,6 +11,8 @@ const RecipeSchema = new Schema({
     instructions: String,
     notes:String,
     preptime: String,
+    prepUnit: String,
+    cookUnit: String,
     cooktime:String,
     author:{
         type: Schema.Types.ObjectId,
