@@ -1,39 +1,72 @@
-.main{
-    width:100%;
-    height: 100vh;
-    position: relative;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-
 .background-image{
-    position: absolute;
-    top:0;
-    left:0;
+    background:url('https://images.unsplash.com/photo-1452251889946-8ff5ea7b27ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=799&q=80');
+    background-repeat: no-repeat;
+    background-position: center  center;
+    -webkit-background-size:cover;
+    background-size: cover;
     width:100%;
-    height:auto;
+    height:100vh;
     z-index:-1;
-}
-
-.background-image img{
-    width: 100%;
-    height: auto;
+    display:-webkit-flex ;
+    display: -moz-flex;
+    display: -ms-flex;
+    display:-o-flex ;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-flow:column;
+    margin-top: -110px;
 }
 
 .text-overlay{
     display:flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.3);
+    width: 60%;
+    background: rgba(79,43,14,0.5);
     color:white;
-
+    padding:10px;
 }
-
 .container {
     padding-left: 0% !important;
     padding-right: 0% !important;
     max-width: 100% !important;
+}
+
+.navbar{
+    background-color:transparent !important; 
+   
+}
+.nav-link{
+    color:white !important ;
+}
+
+
+.navbar-brand{
+    color:white !important;
+}
+
+.text-overlay a {
+    background:rgb(184,165,2) !important;
+    border-color: rgb(184,165,2)!important;
+}
+
+@media screen and (max-width:1000px){
+    .background-image{
+        margin-top:-275px;
+        height:150vh;
+    }
+}
+
+.nav-link svg{
+    height:30px;
+    width:30px;
+    fill:white;
+}
+.navbar-brand svg{
+    height:50px;
+    width:50px;
+    fill:white;
 }

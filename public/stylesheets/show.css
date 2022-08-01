@@ -10,3 +10,16 @@
 .review{
     margin-top: 10vh;
 }
+.header{
+    text-align: center;
+    border: 3px solid #9CAF88;
+    width:55vw;
+    margin-left:18vw;
+    margin-bottom:30px
+}
+
+.prep , .cook{
+    color:#9CAF88;
+    margin:15px;
+    margin-bottom:20px;
+}

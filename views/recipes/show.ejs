@@ -3,7 +3,13 @@
 <link rel="stylesheet" href="/stylesheets/show.css">
 
 <div class="row">
-    <div class="col-8">
+    <div class="header">
+        <h1 class="title"><%= recipe.title%></h1>
+        <span class="prep">Preptime - <%= recipe.preptime%> <%= recipe.prepUnit%>    </span>  
+        <span class="cook">Cooktime - <%= recipe.cooktime%> <%= recipe.cookUnit%></span>
+    </div>
+   
+    <div class="col-lg-8  offset-lg-2">
         <div id="recipeCarousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <% recipe.images.forEach((img, i) => {  %>
@@ -27,9 +33,12 @@
 
         <div class="card mb-3">
             <div class="card-body">
-                <h3 class="card-title"><%= recipe.title%></h3>
-                <span>Preptime - <%= recipe.preptime%> <%= recipe.prepUnit%> Cooktime - <%= recipe.cooktime%> <%= recipe.cookUnit%></span>
+                
+                
+                <li class="list-group-item text-muted">Submitted by <%= recipe.author.username%></li>
+
         <ul>
+            
                 <% for(let i=0; i<recipe.ingredients.length; i++) { %>
                      <%    const num = recipe.ingredients[i][0]%>
                      <%    const unit = recipe.ingredients[i][1] %>
@@ -42,14 +51,21 @@
        
 
             <ul class="list-group list-group-flush">
-                <li class="list-group-item text-muted">Submitted by <%= recipe.author.username%></li>
-                <li class="list-group-item "><%= recipe.instructions%></li>
+                <li class="list-group-item ">
+                    <h4>Instructions</h3>
+                    <%= recipe.instructions%>
+                </li>
+                <li class="list-group-item text-muted">
+                    <h5>Notes</h5>
+                    <%= recipe.notes%>
+                </li>
             </ul>
+            
             <%  if( currentUser && recipe.author.equals(currentUser._id))  {%>
             <div class="card-body">
-                <a class="card-link btn btn-info" href="/recipes/<%=recipe._id%>/edit">Edit</a>
+                <a style="background:#9CAF88;" class="card-link btn" href="/recipes/<%=recipe._id%>/edit">Edit</a>
                 <form class="d-inline" action="/recipes/<%=recipe._id%>?_method=DELETE" method="POST">
-                    <button class="btn btn-danger">Delete</button>
+                    <button style="background:#E1AD9D;" class="btn">Delete</button>
                 </form>
             </div>
             <% } %>
@@ -59,7 +75,7 @@
         </div>
 
     </div>
-    <div class=" review col-2 offset-md-2">
+    <div class=" review col-lg-8 ">
         <% if(currentUser){ %>
         <h2>Leave a Review</h2>
         <form action="/recipes/<%=recipe._id%>/reviews" method="POST" class="mb-3 validated-form" novalidate>
@@ -88,7 +104,7 @@
                     Looks good!
                 </div>
             </div>
-            <button class="btn btn-success">Submit</button>
+            <button style="background:#9CAF88;"class="btn">Submit</button>
         </form>
         <% } %>
         <% for(let review of recipe.reviews) { %>

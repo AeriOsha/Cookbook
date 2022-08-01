@@ -1,16 +1,72 @@
-.btn{
-    background-color: rgb(108,117,125);
+ main.container{
+    min-width:100%;
+    margin:0px ;
+    margin-top:-275px;
+    padding-top:275px;
+    z-index:-100;
 }
+
 .recipe-container{
     gap:2vw;
-   
+   margin-top: 150px;
    
 }
+.recipe-card{
+    padding:0 !important;
+    box-shadow: rgb(89,28,0,0.9) 0px 13px 27px -10px,rgba(104, 90, 58, 0.7) 0px 8px 16px -8px;
+}
 .img-container{
-    width:270px;
+    width:100%;
     height: 250px;
+  border: solid 20px #E1AD9D;
 }
 .card-image{
     width:100%;
     height:100%;
+}
+.card-body{
+     border:solid 5px #E1AD9D;
+}
+.hero-banner{
+    width:100%;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+.hero-banner .col-1{
+    position:relative;
+    z-index:-1;
+}
+.hero-banner .col-1 img{
+    height:auto;
+    width:500px;
+    position: absolute;
+    top:0;
+    border: 7px solid #9CAF88;
+    outline:solid #9CAF88;
+    outline-offset: -20px;
+    padding:20px;
+}
+
+.hero-banner .col-2{
+   width:600px;
+    padding:15px;
+    z-index: 10;
+    margin-left:30px;
+    margin-top:110px;
+    background:#9CAF88;
+    box-shadow: rgba(146,135,110,0.25) 0px 13px 27px -5px, rgb(146,135,110,0.3) 0px 8px 16px -8px;
+}
+
+.navbar{
+    background:transparent !important;
+
+}
+
+@media screen and (max-width:1000px){
+    .hero-banner .col-1{
+        justify-content: center;
+    }
+    .hero-banner .col-2{
+        margin-top: 380px !important;
+    }
 }

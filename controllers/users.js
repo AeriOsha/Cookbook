@@ -45,5 +45,5 @@ module.exports.logout = (req, res,next) => {
 }
 
 module.exports.renderHome = (req, res) => {
-    res.render('recipes/home');
+    res.redirect('/recipes');
 }
