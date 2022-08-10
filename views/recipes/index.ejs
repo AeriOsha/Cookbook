@@ -10,7 +10,7 @@
         <div class="col col-lg-8 col-md-6 col-sm-4 col-2 ">
             <h1>All Recipes</h1>
             <p>Browse all of our recipes, from quick and easy weeknight dinners to holiday favorites. Whether you're in the mood for chicken, one-pot pasta, or a chocolate dessert, we've got you covered here at marthastewart.com.</p>
-            <a href="/recipes/new">Add A Recipe</a>
+            <a class=" index-btn btn" href="/recipes/new">Add A Recipe</a>
         </div>
     </div>
   
@@ -25,8 +25,8 @@
                    <img class="card-image card-img-top" src='https://tmbidigitalassetsazure.blob.core.windows.net/rms3-prod/attachments/37/1200x1200/exps16865_CW143044B06_12_2b.jpg'> 
               <% }%>
                    <div class="card-body">
-                    <h5 class="card-title" href =""> <%= recipe.title %> </h5>
-                    <a style="color:#E1AD9D;"href="/recipes/<%= recipe._id%>" class=""> View <%=recipe.title%> <svg width="20px" height="20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                    <h5 class="card-title"  href="/recipes/<%= recipe._id%>"> <%= recipe.title %> </h5>
+                    <a style="color:#E1AD9D;" href="/recipes/<%= recipe._id%>" class=""> View <%=recipe.title%> <svg class="card-arr " version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                         viewBox="0 0 227.096 227.096" style="enable-background:new 0 0 227.096 227.096;" xml:space="preserve">
                    <g>
                        <g>

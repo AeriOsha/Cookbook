@@ -98,7 +98,7 @@
                 <label for="first-rate5" title="Amazing">5 stars</label>
             </fieldset>
             <div class="mb-3">
-                <label class="form-label" for="body">Review Text</label>
+                <label class="form-label" for="body">Add Your Review Text</label>
                 <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3" required></textarea>
                 <div class="valid-feedback">
                     Looks good!
@@ -109,7 +109,7 @@
         <% } %>
         <% for(let review of recipe.reviews) { %>
         <div class="card mb-3 ">
-            <div class="card-body">
+            <div style="border:2px solid #9CAF88;" class="card-body">
                 <h5 class="card-title"> <%= review.author.username%></h5>
                 <p class="starability-result" data-rating="<%=review.rating%>">
                     Rated: <%= review.rating %> stars
@@ -118,7 +118,7 @@
                 <p class="card-text">Review: <%= review.body %></p>
                 <%  if( currentUser && review.author.equals(currentUser._id))  {%>
                 <form action="/recipes/<%=recipe._id%>/reviews/<%=review._id%>?_method=DELETE" method="POST">
-                    <button class="btn btn-sm btn-danger">Delete</button>
+                    <button style="background:#E1AD9D;"class="btn btn-sm ">Delete</button>
                 </form>
                 <% } %>
             </div>
